@@ -30,9 +30,11 @@
             <select id="algorithm" onchange="updateTheory()" class="small-input">
                 <option value="bubble">Bubble Sort</option>
                 <option value="quick">Quick Sort</option>
-                <option value="dp">Dynamic Programming</option>
-                <option value="bfs">Graph BFS</option>
+                <option value="dp">Dynamic programming</option>
+                <option value="graph">Graph Traversal</option>
             </select>
+
+            <input type="text" id="targetInput" class="small-input" placeholder="Enter target sum e.g. 100" style="display:none;">
 
             <label>Speed</label>
             <input type="range" id="speed" class="small-slider" min="50" max="1000" value="500">
