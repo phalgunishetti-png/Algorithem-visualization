@@ -54,15 +54,17 @@ for i in range(n):
     if arr[j] > arr[j+1]:
       swap(arr[j], arr[j+1])
 `;
-    } else {
+    } 
+
+    else if (algo === "quick") {
         theoryDiv.innerHTML = `
         <b>Quick Sort:</b><br>
         • Pick a pivot element<br>
-        • Place smaller elements left, larger right<br>
-        • Recursively sort both sides<br>
+        • Partition array<br>
+        • Recursively sort subarrays<br>
         <br>
-        ✔ Very fast in practice<br>
-        ❌ Slightly complex logic
+        ✔ Very fast<br>
+        ❌ Complex logic
         `;
         complexityDiv.innerHTML = "Time Complexity: O(n log n)";
 
@@ -72,6 +74,47 @@ quickSort(arr, low, high):
     pi = partition(arr)
     quickSort(left)
     quickSort(right)
+`;
+    }
+
+    else if (algo === "dp") {
+        theoryDiv.innerHTML = `
+        <b>Dynamic Programming (Fibonacci):</b><br>
+        • Store results of subproblems<br>
+        • Avoid recomputation<br>
+        • Build solution bottom-up<br>
+        <br>
+        ✔ Efficient<br>
+        ❌ Uses extra memory
+        `;
+        complexityDiv.innerHTML = "Time Complexity: O(n)";
+
+        codeDisplay.textContent = `
+fib(n):
+  dp[0]=0, dp[1]=1
+  for i in range(2,n):
+    dp[i]=dp[i-1]+dp[i-2]
+`;
+    }
+
+    else if (algo === "bfs") {
+        theoryDiv.innerHTML = `
+        <b>BFS (Graph Traversal):</b><br>
+        • Uses queue<br>
+        • Visit nodes level by level<br>
+        • Finds shortest path<br>
+        <br>
+        ✔ Simple<br>
+        ❌ Uses memory
+        `;
+        complexityDiv.innerHTML = "Time Complexity: O(V + E)";
+
+        codeDisplay.textContent = `
+bfs(graph, start):
+  queue = [start]
+  while queue:
+    node = queue.pop(0)
+    visit(node)
 `;
     }
 }
@@ -85,8 +128,15 @@ async function startSort() {
 
     if (algo === "bubble") {
         await bubbleSort();
-    } else {
+    } 
+    else if (algo === "quick") {
         await quickSort(0, arr.length - 1);
+    }
+    else if (algo === "dp") {
+        await dynamicProgramming();
+    }
+    else if (algo === "bfs") {
+        await bfsTraversal();
     }
 }
 
@@ -174,6 +224,72 @@ async function partition(low, high) {
     bars[high].style.height = arr[high] * 3 + "px";
 
     return i + 1;
+}
+
+/* DYNAMIC PROGRAMMING */
+async function dynamicProgramming() {
+    stepsDiv.innerHTML = "";
+
+    let n = arr.length;
+    let dp = [];
+
+    dp[0] = arr[0] || 0;
+    dp[1] = arr[1] || 1;
+
+    addStep(`dp[0] = ${dp[0]}`);
+    addStep(`dp[1] = ${dp[1]}`);
+
+    for (let i = 2; i < n; i++) {
+        dp[i] = dp[i-1] + dp[i-2];
+
+        addStep(`dp[${i}] = ${dp[i]}`);
+
+        let bars = document.getElementsByClassName("bar");
+        bars[i].style.background = "purple";
+        bars[i].style.height = dp[i] * 3 + "px";
+
+        await sleep();
+    }
+}
+
+/* BFS GRAPH */
+async function bfsTraversal() {
+    stepsDiv.innerHTML = "";
+
+    let n = arr.length;
+    let graph = {};
+
+    for (let i = 0; i < n; i++) {
+        graph[i] = [];
+        if (i + 1 < n) graph[i].push(i + 1);
+    }
+
+    let visited = new Array(n).fill(false);
+    let queue = [0];
+
+    addStep("Starting BFS from node 0");
+
+    while (queue.length > 0) {
+        let node = queue.shift();
+
+        if (!visited[node]) {
+            visited[node] = true;
+
+            addStep(`Visited node ${node}`);
+
+            let bars = document.getElementsByClassName("bar");
+            bars[node].style.background = "orange";
+
+            await sleep();
+
+            for (let neighbor of graph[node]) {
+                if (!visited[neighbor]) {
+                    queue.push(neighbor);
+                    addStep(`Queueing ${neighbor}`);
+                }
+            }
+        }
+    }
 }
 
 function addStep(text) {
