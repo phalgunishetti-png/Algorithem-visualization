@@ -36,22 +36,22 @@ function updateTheory() {
 
     if (algo === "bubble") {
         targetInput.style.display = "none";
-        theoryDiv.innerHTML = "<b>Bubble Sort:</b> Compare adjacent elements and swap.";
+        theoryDiv.innerHTML = "<b>Bubble Sort:</b> Bubble sort repeatedly Compares adjacent elements and swaps them if they are in the wrong order.This process continues for multiple passes until the entire list is sorted.";
         complexityDiv.innerHTML = "Time Complexity: O(n²)";
         codeDisplay.textContent = "for i in range(n):\n  for j in range(n-i-1):\n    if arr[j] > arr[j+1]: swap";
     } else if (algo === "quick") {
         targetInput.style.display = "none";
-        theoryDiv.innerHTML = "<b>Quick Sort:</b> Pick pivot, partition, recurse.";
+        theoryDiv.innerHTML = "<b>Quick Sort:</b> Quick sort works by selecting a pivot element,then partitioning the array so elements smaller go left and larger go right.It then recursively applies the same process to the left and right subarrays until the array is sorted.";
         complexityDiv.innerHTML = "Time Complexity: O(n log n)";
         codeDisplay.textContent = "quickSort(arr, low, high):\n  if low < high:\n    pi = partition(arr)\n    quickSort(left)\n    quickSort(right)";
     } else if (algo === "dp") {
         targetInput.style.display = "block";
-        theoryDiv.innerHTML = "<b>Dynamic Programming (Subset Sum):</b> Build table of achievable sums.";
+        theoryDiv.innerHTML = "<b>Dynamic Programming (Subset Sum):</b>DP is an optimization technique that solves complex problems by breaking them into smaller overlapping subproblems and storing their results, and it Build table of achievable sums.";
         complexityDiv.innerHTML = "Time Complexity: O(n * target)";
         codeDisplay.textContent = "subsetSum(arr, target):\n  dp[0][0] = true\n  for i in 1..n:\n    for t in 0..target:\n      dp[i][t] = dp[i-1][t] OR dp[i-1][t-arr[i]]";
     } else if (algo === "graph") {
         targetInput.style.display = "none";
-        theoryDiv.innerHTML = "<b>Graph Traversal (BFS):</b> Explore level by level.";
+        theoryDiv.innerHTML = "<b>Graph Traversal (BFS):</b> BFS explores a graph level by level,visiting all neighbours of a node before moving deeper.";
         complexityDiv.innerHTML = "Time Complexity: O(V+E)";
         codeDisplay.textContent = "BFS(graph, start):\n  queue = [start]\n  while queue not empty:\n    node = dequeue()\n    visit(node)\n    enqueue(neighbors)";
     }
