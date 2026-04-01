@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Algorithm Visualizer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1 class="title">Algorithm Visualizer</h1>
+
+<div class="container">
+
+    <!-- LEFT SIDE (CODE + THEORY) -->
+    <div class="code-panel">
+        <h2>Algorithm Code</h2>
+        <pre id="codeDisplay"></pre>
+
+        <div class="theory" id="theory"></div>
+        <div class="complexity" id="complexity"></div>
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="right-panel">
+
+        <!-- CONTROLS -->
+        <div class="controls">
+            <input type="text" id="arrayInput" class="small-input" placeholder="5,3,8,2">
+
+            <select id="algorithm" onchange="updateTheory()" class="small-input">
+                <option value="bubble">Bubble Sort</option>
+                <option value="quick">Quick Sort</option>
+            </select>
+
+            <label>Speed</label>
+            <input type="range" id="speed" class="small-slider" min="50" max="1000" value="500">
+
+            <button onclick="generateBars()">Generate</button>
+            <button onclick="startSort()">Start Sorting</button>
+        </div>
+
+        <!-- VISUALIZER -->
+        <div id="bars"></div>
+
+        <div class="steps" id="steps"></div>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

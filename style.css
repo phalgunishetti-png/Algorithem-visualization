@@ -1,0 +1,136 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: white;
+}
+
+.title {
+    text-align: center;
+}
+
+/* Layout */
+.container {
+    display: flex;
+    height: 95vh;
+}
+
+/* LEFT PANEL */
+.code-panel {
+    flex: 1;
+    padding: 20px;
+    background: rgba(0,0,0,0.4);
+    overflow-y: auto;
+}
+
+pre {
+    background: black;
+    padding: 10px;
+    border-radius: 10px;
+    color: #00ffcc;
+    line-height: 1.5;
+}
+
+/* Highlight current code line */
+.highlight {
+    background: rgba(0,255,204,0.2);
+    display: block;
+    border-radius: 5px;
+}
+
+/* THEORY BELOW CODE */
+.theory {
+    margin-top: 10px;
+    padding: 10px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.complexity {
+    margin-top: 5px;
+    color: #00ffcc;
+}
+
+/* RIGHT PANEL */
+.right-panel {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+}
+
+/* CONTROLS */
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px; /* space before bars */
+}
+
+/* SMALL INPUT */
+.small-input {
+    width: 120px;
+    padding: 6px;
+    border-radius: 6px;
+    border: none;
+}
+
+/* ADD SPACE BELOW INPUT */
+#arrayInput {
+    margin-bottom: 8px;
+}
+
+/* SMALL SLIDER */
+.small-slider {
+    width: 150px;
+    margin-bottom: 8px;
+}
+
+/* BUTTONS */
+button {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: none;
+    background: #00c6ff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #00ffcc;
+}
+
+/* BARS */
+#bars {
+    display: flex;
+    align-items: flex-end;
+    height: 280px;
+    margin-top: 15px; /* separation from controls */
+    background: rgba(255,255,255,0.05);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.bar {
+    flex: 1;
+    margin: 0 3px;
+    background: #00c6ff;
+    position: relative;
+}
+
+.bar span {
+    position: absolute;
+    top: -20px;
+    font-size: 12px;
+}
+
+/* STEPS */
+.steps {
+    margin-top: 12px;
+    height: 120px;
+    overflow-y: auto;
+    background: rgba(255,255,255,0.05);
+    padding: 10px;
+    border-radius: 10px;
+}
